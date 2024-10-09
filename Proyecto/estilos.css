@@ -35,7 +35,7 @@
 		line-height:100px;
 	}
 	.container .btn-menu label{
-		color: #fff;
+		color: #ffffff;
 		font-size: 25px;
 		cursor: pointer;
 	}
@@ -86,7 +86,7 @@
 	}
 	.cont-menu{
 		width: 100%;
-		max-width: 250px;
+		max-width: 160px;
 		background: #1c1c1c;
 		height: 100vh;
 		position: relative;
@@ -98,18 +98,19 @@
 	}
 	.cont-menu nav{
 		transform: translateY(15%);
+		width: 100%;
 	}
 	.cont-menu nav a{
 		display: block;
 		text-decoration: none;
-		padding: 20px;
+		padding: 10px;
 		color: #ffffff;
-		border-left: 5px solid transparent;
+		border-left: none;
 		transition: all 400ms ease;
 	}
   
 	.cont-menu nav a:hover{
-		border-left: 5px solid #c7c7c7;
+		border-left: none;
 		background: #1f1f1f;
         
 	}
@@ -125,39 +126,55 @@
   	/*Fin de Menù lateral*/
 
     /*Estilos para texto del Menu lateral*/
+ 
+	.cont-menu ul {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+		width: 100%;
+		padding: 0;
+	}
+	
+	ul li {
+		position: relative;
+		list-style: none;
+		width: 100%;
+		overflow: hidden;
+		}
+	
+		ul li a {
+			position: relative;
+			font-size: 1em;
+			padding: 10px 15px;
+			text-decoration: none;
+			line-height: 1em;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			color: transparent !important; /* Hace el relleno de la letra transparente */
+			-webkit-text-stroke: 1px rgba(255, 255, 255, 05); /* Define el contorno de la letra en blanco */
+			background: none !important; /* Asegura que no haya fondo */
+			-webkit-background-clip: text; /* Permite que el contorno funcione adecuadamente */
+		}
 
-    .cont-menu nav a {
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        color: rgb(255, 255, 255); /* Color inicial del texto */
-        transition: color 0.9s; /* Transición de color */
-      }
-      
-      .cont-menu nav a::before {
-        content: ""; /* Esto crea el contenido del pseudo-elemento */
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 3px; /* Ajusta el ancho de la barra según tus preferencias */
-        background-color: green;
-        transition: width 0.9s ease-in-out;
-      }
-      
-      .cont-menu nav a:hover {
-        color: green;
-        animation: none;
-        /* Ocultamos la barra al pasar el mouse */
-        &::before {
-            left: 40%; 
-            width: 0;
-        }
-      }
-      
-      @keyframes paint {
-        to {
-          color: green;
-        }
-      }
+		ul li a::before{
+			content: attr(data-text) " "	;
+			position: absolute;
+			color: var(--clr);
+			width: 0;
+			overflow: hidden;
+			transition: 1s;
+			border-right: 5px solid var(--clr);
+			-webkit-text-stroke: 1px var(--clr);
+			white-space: nowrap; /* Evita el salto de línea si el texto es muy largo */
+			left: 10px;
+		}
+
+		ul li a:hover::before{
+			width: 80%;
+			filter: drop-shadow(0 0 25px var(--clr));
+
+
+
+
+		}
